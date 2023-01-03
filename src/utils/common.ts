@@ -1,10 +1,10 @@
-import { Tweet } from "../types";
+import { TweetType } from "../types";
 
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export const getTweetFromRepo = (repo: any): Tweet => {
+export const getTweetFromRepo = (repo: any): TweetType => {
   const {
     name,
     html_url,
@@ -40,32 +40,25 @@ export const getTweetFromRepo = (repo: any): Tweet => {
 };
 
 export const getGithubStats = (userData: any) => {
-  const { public_repos, public_gists, followers, following, company, login, location } = userData;
+  const { public_repos, public_gists, followers, created_at, disk_usage } = userData;
   return [
     {
-      name: "Username",
-      value: login,
+      name: "Joined_on",
+      value: new Date(created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     },
     {
-      name: "Location",
-      value: location,
-    },
-    {
-      name: "Company",
-      value: company,
+      name: "Disk_usage",
+      value: `${disk_usage} KB`,
     },
     {
       name: "Repos",
       value: public_repos,
     },
-    {
-      name: "Followers",
-      value: followers,
-    },
-    {
-      name: "Following",
-      value: following,
-    },
+
     {
       name: "Gists",
       value: public_gists,
@@ -73,6 +66,20 @@ export const getGithubStats = (userData: any) => {
     {
       name: "Commits",
       value: followers,
+    },
+  ];
+};
+
+export const getGithubProfileStats = (userData: any) => {
+  const { followers, following } = userData;
+  return [
+    {
+      name: "Followers",
+      value: followers,
+    },
+    {
+      name: "Following",
+      value: following,
     },
   ];
 };

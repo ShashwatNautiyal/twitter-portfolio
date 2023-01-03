@@ -1,4 +1,4 @@
-export type Tweet = {
+export type TweetType = {
   id: string;
   name: string;
   nameLink: string;
@@ -7,6 +7,7 @@ export type Tweet = {
   verified: boolean;
   description?: string;
   info: string;
+  images?: string[];
   text: string;
   details: {
     data: string;
@@ -14,11 +15,19 @@ export type Tweet = {
 };
 
 export type GithubPageProps = {
-  tweets: Tweet[];
-  user: {
+  tweets: TweetType[];
+  githubStats: {
+    name: string;
+    value: string;
+  }[];
+  profileStats: {
+    name: string;
+    value: string;
+  }[];
+  user: any;
+  followerStats: {
     name: string;
     value: string;
   }[];
   languages: string[];
-  githubLink: string;
 };

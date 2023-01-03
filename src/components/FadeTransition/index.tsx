@@ -5,10 +5,14 @@ const FadeTransition = ({
   delay,
   children,
   direction = "up",
+  speed = 500,
+  classname,
 }: {
   delay: number;
   children: React.ReactNode;
   direction?: "up" | "down" | "left" | "right";
+  speed?: number;
+  classname?: string;
 }) => {
   const enterFromDirection =
     direction === "up"
@@ -30,9 +34,10 @@ const FadeTransition = ({
 
   return (
     <Transition.Child
+      className={classname}
       suppressHydrationWarning
       style={{ transitionDelay: `${delay}ms` }}
-      enter={`transition-all ease-in-out duration-500`}
+      enter={`transition-all ease-in-out duration-${speed}`}
       enterFrom={`opacity-0 ${enterFromDirection}`}
       enterTo={`opacity-100 ${enterToDirection}`}
       leave="transition-all ease-in-out duration-300"

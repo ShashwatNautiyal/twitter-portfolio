@@ -15,6 +15,7 @@ const Tweet = ({
   usernameLink,
   verified,
   description,
+  images,
   info,
   text,
   details,
@@ -30,6 +31,7 @@ const Tweet = ({
   verified: boolean;
   description?: string;
   InfoIcon: JSX.Element;
+  images?: string[];
   info: {
     data: string;
   };
@@ -68,7 +70,7 @@ const Tweet = ({
               {verified && (
                 <Image
                   alt="verified bage"
-                  src={imgSrc}
+                  src={"/images/verify.png"}
                   width={12}
                   height={12}
                   className="rounded-full"
@@ -97,7 +99,23 @@ const Tweet = ({
           </div>
 
           <div className="leading-6 whitespace-pre-line">{text}</div>
-
+          {images && images.length > 0 && (
+            <div className="grid gap-1 lg:grid-cols-2 grid-cols-1 relative h-52">
+              {images?.map((image, index) => (
+                <div key={index} className="relative h-full w-full ">
+                  <Image
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    alt="github logo"
+                    className="rounded-md"
+                    src={image}
+                    fill={true}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
           <div className="flex space-x-2 divide-x divide-gray-light">
             {details.map((detail, index) => (
               <div
