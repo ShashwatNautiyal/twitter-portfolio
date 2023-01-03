@@ -132,7 +132,7 @@ export async function getStaticProps() {
   }, []);
 
   return {
-    props: { tweets, user, languages, githubLink },
+    props: { title: "Github", tweets, user, languages, githubLink },
   };
 }
 
