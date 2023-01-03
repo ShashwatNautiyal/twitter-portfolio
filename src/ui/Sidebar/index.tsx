@@ -13,7 +13,14 @@ import { classNames } from "../../utils/common";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { BsTwitter } from "react-icons/bs";
+import { Pacifico } from "@next/font/google";
+
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pacifico",
+});
 
 const Sidebar = () => {
   const { pathname } = useRouter();
@@ -36,13 +43,14 @@ const Sidebar = () => {
 
   return (
     <div className="bg-white h-screen min-w-[300px] py-4 shadow-md sticky top-0">
-      <Image
-        src={"/images/portfolio.png"}
-        alt="portfolio logo"
-        height={36}
-        width={36}
-        className="mx-6"
-      />
+      <div className="relative mx-4">
+        <span
+          className={`${pacifico.className} absolute text-white-light text-[10px] top-[16px] left-[10px]`}
+        >
+          SN
+        </span>
+        <BsTwitter size={40} className="text-blue" />
+      </div>
 
       <div className="flex h-[calc(100vh-36px-16px)] pl-2 flex-col justify-center gap-6 relative">
         {navLinks.map((link) => (

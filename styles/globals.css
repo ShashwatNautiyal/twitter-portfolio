@@ -35,6 +35,10 @@
     -webkit-text-stroke: 2px theme("colors.blue.DEFAULT");
   }
 
+  .text-stroke-white {
+    -webkit-text-stroke: 1px theme("colors.white.DEFAULT");
+  }
+
   .text-stroke-dark-gray {
     -webkit-text-stroke: 1px theme("colors.gray.dark");
   }
