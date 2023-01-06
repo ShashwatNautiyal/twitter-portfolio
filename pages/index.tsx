@@ -10,46 +10,34 @@ const pacifico = Pacifico({
 });
 
 export default function HomePage() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShow(true);
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
   return (
-    <Transition appear show={show}>
+    <FadeTransition.Root>
       <div className="flex items-center flex-col gap-16 justify-center max-w-[800px] mx-auto h-[calc(100vh-72px-48px)]">
-        <FadeTransition direction="down" delay={0}>
+        <FadeTransition.Child direction="down" delay={0}>
           <h1
             className={`${pacifico.className} text-center text-transparent text-5xl text-stroke-blue`}
           >
             Hey, I’m <span className="text-blue text-stroke-none">Shashwat Nautiyal</span>
           </h1>
-        </FadeTransition>
+        </FadeTransition.Child>
 
-        <FadeTransition direction="down" delay={100}>
+        <FadeTransition.Child direction="down" delay={100}>
           <h2 className="text-center text-transparent text-5xl text-stroke-blue">
             I’m a <span className="text-blue text-stroke-none">Frontend</span> developer,{" "}
             <span className="text-blue text-stroke-none">UI/UX</span> designer &{" "}
             <span className="text-blue text-stroke-none">Technical</span> writer
           </h2>
-        </FadeTransition>
+        </FadeTransition.Child>
 
-        <FadeTransition direction="down" delay={200}>
+        <FadeTransition.Child direction="down" delay={200}>
           <div className="flex gap-4">
             <div className="text-stroke-dark-gray text-2xl text-transparent">-&gt; My Projects</div>
             <div className="text-stroke-dark-gray text-2xl text-transparent">
               -&gt; More about me
             </div>
           </div>
-        </FadeTransition>
+        </FadeTransition.Child>
       </div>
-    </Transition>
+    </FadeTransition.Root>
   );
 }

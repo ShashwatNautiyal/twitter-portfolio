@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Sidebar />
       <div className="flex flex-col w-full">
         <Navbar />
-        <div className="p-6">
+        <div className="p-6 ">
           <Head>
             <title>{title}</title>
           </Head>

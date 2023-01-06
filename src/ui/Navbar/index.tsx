@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const { pathname } = useRouter();
   return (
-    <div className="bg-white flex items-center p-4 justify-between border-l sticky top-0 z-10">
+    <div className="bg-white flex items-center p-4 justify-between border-l">
       <div className="font-bold capitalize">
         {pathname !== "/" ? pathname.substring(1) : "Home"}
       </div>

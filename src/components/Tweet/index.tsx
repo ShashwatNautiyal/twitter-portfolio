@@ -44,7 +44,7 @@ const Tweet = ({
   }[];
 }) => {
   return (
-    <FadeTransition delay={index * 100}>
+    <FadeTransition.Child delay={index * 100}>
       <div className="flex gap-2 text-sm mb-4">
         <div className="shrink-0">
           <Image
@@ -129,7 +129,7 @@ const Tweet = ({
           </div>
         </div>
       </div>
-    </FadeTransition>
+    </FadeTransition.Child>
   );
 };
 

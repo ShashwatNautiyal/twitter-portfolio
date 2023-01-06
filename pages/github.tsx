@@ -37,7 +37,7 @@ const GithubPage = (props: GithubPageProps) => {
 
   return (
     <div className="flex gap-4">
-      <div className="w-[30%] text-sm flex flex-col gap-4">
+      <div className="w-[30%] text-sm flex flex-col gap-4 h-fit sticky top-6">
         <Container>
           <div className="flex flex-col items-center gap-4">
             <Image
@@ -81,27 +81,29 @@ const GithubPage = (props: GithubPageProps) => {
           </div>
         </Container>
         <Container title="Followers">
-          <Transition.Root appear show={show} className={"flex flex-wrap gap-1"}>
-            {followerStats.map((follower, index) => (
-              <FadeTransition
-                classname={"relative"}
-                key={follower.value}
-                delay={index * 10}
-                speed={100}
-              >
-                <Image
-                  src={follower.value}
-                  alt="Profile Picture"
-                  width={32}
-                  height={32}
-                  className="rounded-full peer"
-                />
-                <div className="absolute -top-[24px] whitespace-nowrap -translate-x-1/2 left-1/2 transition-all -z-10 peer-hover:z-10 opacity-0 peer-hover:opacity-100 ease-in-out duration-500 bg-blue px-2 rounded text-white translate-y-6 peer-hover:translate-y-0 pointer-events-none">
-                  {follower.name}
-                </div>
-              </FadeTransition>
-            ))}
-          </Transition.Root>
+          <FadeTransition.Root>
+            <div className={"flex flex-wrap gap-1"}>
+              {followerStats.map((follower, index) => (
+                <FadeTransition.Child
+                  classname={"relative"}
+                  key={follower.value}
+                  delay={index * 10}
+                  speed={100}
+                >
+                  <Image
+                    src={follower.value}
+                    alt="Profile Picture"
+                    width={32}
+                    height={32}
+                    className="rounded-full peer"
+                  />
+                  <div className="absolute -top-[24px] whitespace-nowrap -translate-x-1/2 left-1/2 transition-all -z-10 peer-hover:z-10 opacity-0 peer-hover:opacity-100 ease-in-out duration-500 bg-blue px-2 rounded text-white translate-y-6 peer-hover:translate-y-0 pointer-events-none">
+                    {follower.name}
+                  </div>
+                </FadeTransition.Child>
+              ))}
+            </div>
+          </FadeTransition.Root>
         </Container>
       </div>
       <div className="w-[45%]">
@@ -145,7 +147,7 @@ const GithubPage = (props: GithubPageProps) => {
           ]}
         />
       </div>
-      <div className="w-[25%] flex flex-col gap-4">
+      <div className="w-[25%] flex flex-col gap-4 h-fit sticky top-6">
         <Container title="GitHub Stats">
           <div className="flex flex-col gap-4 text-sm">
             {githubStats.map((item) => (
@@ -237,8 +239,6 @@ export async function getStaticProps() {
   }, []);
   const profileStats = getGithubProfileStats(userData);
   const followerStats = followersData.map((follower: any) => getFollowerFromData(follower));
-
-  console.log(followersData.length);
 
   return {
     props: {

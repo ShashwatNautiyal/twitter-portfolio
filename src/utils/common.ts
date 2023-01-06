@@ -40,20 +40,8 @@ export const getTweetFromRepo = (repo: any): TweetType => {
 };
 
 export const getGithubStats = (userData: any) => {
-  const { public_repos, public_gists, followers, created_at, disk_usage } = userData;
+  const { public_repos, public_gists, followers } = userData;
   return [
-    {
-      name: "Joined_on",
-      value: new Date(created_at).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-    },
-    {
-      name: "Disk_usage",
-      value: `${disk_usage} KB`,
-    },
     {
       name: "Repos",
       value: public_repos,
@@ -82,4 +70,48 @@ export const getGithubProfileStats = (userData: any) => {
       value: following,
     },
   ];
+};
+
+export const getTweetFromArticle = (article: any): TweetType => {
+  const {
+    id,
+    reading_time_minutes,
+    user,
+    description,
+    url,
+    positive_reactions_count,
+    page_views_count,
+    published_at,
+    comments_count,
+    cover_image,
+  } = article;
+
+  const { username } = user;
+  return {
+    id: id,
+    name: "Dev.to",
+    nameLink: `https://dev.to/${username}`,
+    username: "Dev.to",
+    usernameLink: url,
+    description: `${reading_time_minutes}m`,
+    verified: true,
+    images: [cover_image],
+    info: new Date(published_at).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    text: description,
+    details: [
+      {
+        data: page_views_count,
+      },
+      {
+        data: positive_reactions_count,
+      },
+      {
+        data: comments_count,
+      },
+    ],
+  };
 };

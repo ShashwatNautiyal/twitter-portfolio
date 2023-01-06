@@ -1,24 +1,13 @@
 import { Tab, Transition } from "@headlessui/react";
 import { ReactNode, useRef, useState, useEffect } from "react";
 import { classNames } from "../../utils/common";
+import FadeTransition from "../FadeTransition";
 
 const TabsContainer = ({ tabNames, tabs }: { tabNames: string[]; tabs: ReactNode[] }) => {
   const underlineRef = useRef<any>(null);
 
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineOffsetWidth, setUnderlineOffsetWidth] = useState(0);
-
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShow(true);
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
 
   useEffect(() => {
     if (underlineRef.current) {
@@ -28,7 +17,7 @@ const TabsContainer = ({ tabNames, tabs }: { tabNames: string[]; tabs: ReactNode
   }, []);
 
   return (
-    <div className="px-6 py-4 bg-white rounded h-full top-0 w-full">
+    <div className="px-6 py-4 bg-white rounded h-full w-full">
       <Tab.Group>
         <Tab.List className={"flex gap-3 relative text-sm font-medium"}>
           <div className="h-[1px] bg-gray-light absolute -inset-x-6 bottom-0"></div>
@@ -62,9 +51,9 @@ const TabsContainer = ({ tabNames, tabs }: { tabNames: string[]; tabs: ReactNode
         </Tab.List>
         <Tab.Panels className={"mt-4"}>
           {tabs?.map((tab, index) => (
-            <Transition.Root key={index} show={show}>
+            <FadeTransition key={index}>
               <Tab.Panel key={index}>{tab}</Tab.Panel>
-            </Transition.Root>
+            </FadeTransition>
           ))}
         </Tab.Panels>
       </Tab.Group>

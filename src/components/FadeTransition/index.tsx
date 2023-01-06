@@ -1,7 +1,27 @@
 import { Transition } from "@headlessui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const FadeTransition = ({
+const FadeTransition = ({ children }: { children: React.ReactNode }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShow(true);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  return (
+    <Transition.Root appear show={show} as={React.Fragment}>
+      {children}
+    </Transition.Root>
+  );
+};
+
+const Child = ({
   delay,
   children,
   direction = "up",
@@ -48,5 +68,8 @@ const FadeTransition = ({
     </Transition.Child>
   );
 };
+
+FadeTransition.Root = FadeTransition;
+FadeTransition.Child = Child;
 
 export default FadeTransition;

@@ -5,10 +5,11 @@ import { FaHeart } from "react-icons/fa";
 import { MdAccessTime, MdModeComment, MdRemoveRedEye, MdStar } from "react-icons/md";
 import Button from "../src/components/Button";
 import Container from "../src/components/Container";
+import FadeTransition from "../src/components/FadeTransition";
 import TabsContainer from "../src/components/TabsContainer";
 import Tweet from "../src/components/Tweet";
 import { TweetType } from "../src/types";
-import { classNames } from "../src/utils/common";
+import { classNames, getTweetFromArticle } from "../src/utils/common";
 
 type BlogPageProps = {
   tweets: TweetType[];
@@ -19,15 +20,23 @@ type BlogPageProps = {
   tags: string[];
   devLink: string;
   user: any;
+  mediumArticles: {
+    title: string;
+    date: string;
+    link: string;
+    image: string;
+    description: string;
+    tags: string[];
+  }[];
 };
 
 const BlogPage = (props: BlogPageProps) => {
-  const { tweets, blogStats, tags, devLink, user } = props;
+  const { tweets, blogStats, tags, devLink, user, mediumArticles } = props;
 
   const { name, username, twitter_username, github_username, bio } = user;
   return (
     <div className="flex gap-4 w-full">
-      <div className="w-[30%] text-sm">
+      <div className="w-[30%] text-sm flex gap-4 flex-col h-fit sticky top-6">
         <Container>
           <div className="flex flex-col items-center gap-4">
             <Image
@@ -38,7 +47,7 @@ const BlogPage = (props: BlogPageProps) => {
               className="rounded-full"
             />
             <div className="flex flex-col gap-0 items-center font-medium">
-              <div>{name}</div>
+              <div className="font-semibold">{name}</div>
               <div className="font-light ">@{username}</div>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -77,6 +86,54 @@ const BlogPage = (props: BlogPageProps) => {
               </div>
             </div>
           </div>
+        </Container>
+        <Container title="More Blogs">
+          <FadeTransition.Root>
+            <div className="flex flex-col gap-4 text-sm">
+              <div className="flex flex-col gap-3 justify-between">
+                {mediumArticles.map((article, index) => (
+                  <FadeTransition.Child key={article.date} delay={index * 100}>
+                    <div className="flex flex-col">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Image
+                            alt="dev logo"
+                            src={"/images/medium.png"}
+                            width={32}
+                            height={32}
+                            className="rounded-full"
+                          />
+
+                          <div className="flex flex-col gap-0">
+                            <div className="flex items-center gap-2">
+                              <div className="font-medium">Medium</div>
+                              <Image
+                                alt="verified bage"
+                                src={"/images/verify.png"}
+                                width={12}
+                                height={12}
+                                className="rounded-full"
+                              />
+                            </div>
+                            <div className="font-light ">@shashwatnautiyal2015</div>
+                          </div>
+                        </div>
+                        <Button
+                          color="blue"
+                          target="_blank"
+                          referrerPolicy="no-referrer"
+                          href={article.link}
+                        >
+                          Open
+                        </Button>
+                      </div>
+                      <div className="ml-10 mt-1">{article.title}</div>
+                    </div>
+                  </FadeTransition.Child>
+                ))}
+              </div>
+            </div>
+          </FadeTransition.Root>
         </Container>
       </div>
       <div className="w-[45%]">
@@ -121,7 +178,7 @@ const BlogPage = (props: BlogPageProps) => {
           ]}
         />
       </div>
-      <div className="w-[25%] flex flex-col gap-4">
+      <div className="w-[25%] flex flex-col gap-4 h-fit sticky top-6">
         <Container title="Tags">
           <div className="flex flex-col gap-4 text-sm">
             {tags.map((language) => (
@@ -132,29 +189,56 @@ const BlogPage = (props: BlogPageProps) => {
           </div>
         </Container>
         <Container title="You may checkout">
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-4 text-sm">
-              <div className="flex items-center gap-1">
-                <Image
-                  alt="dev logo"
-                  src={"/images/dev.png"}
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-                <div className="font-medium">Dev</div>
-                <Image
-                  alt="verified bage"
-                  src={"/images/verify.png"}
-                  width={12}
-                  height={12}
-                  className="rounded-full"
-                />
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-4 text-sm">
+                <div className="flex items-center gap-1">
+                  <Image
+                    alt="dev logo"
+                    src={"/images/dev.png"}
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                  />
+                  <div className="font-medium">Dev</div>
+                  <Image
+                    alt="verified bage"
+                    src={"/images/verify.png"}
+                    width={12}
+                    height={12}
+                    className="rounded-full"
+                  />
+                </div>
               </div>
+              <Button referrerPolicy="no-referrer" target="_blank" href={devLink}>
+                Check now
+              </Button>
             </div>
-            <Button referrerPolicy="no-referrer" target="_blank" href={devLink}>
-              Check now
-            </Button>
+
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-4 text-sm">
+                <div className="flex items-center gap-1">
+                  <Image
+                    alt="dev logo"
+                    src={"/images/dev.png"}
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                  />
+                  <div className="font-medium">Dev</div>
+                  <Image
+                    alt="verified bage"
+                    src={"/images/verify.png"}
+                    width={12}
+                    height={12}
+                    className="rounded-full"
+                  />
+                </div>
+              </div>
+              <Button referrerPolicy="no-referrer" target="_blank" href={devLink}>
+                Check now
+              </Button>
+            </div>
           </div>
         </Container>
       </div>
@@ -169,6 +253,10 @@ export async function getStaticProps() {
     },
   });
 
+  const { data: mediumArticleData } = await axios.get(
+    `https://mediumpostsapi.vercel.app/api/${process.env.NEXT_PUBLIC_MEDIUM_USERNAME}`
+  );
+
   const tweets = articlesData.map((article: any) => getTweetFromArticle(article));
   const blogStats = articlesData ? getBlogStats(articlesData) : {};
   const tags = articlesData.reduce((acc: any, article: any) => {
@@ -181,10 +269,12 @@ export async function getStaticProps() {
   }, []);
   const devLink = `https://dev.to/${articlesData[0].user.username}`;
   const bio = `I hope you enjoy reading my blogs as much as I enjoy writing them.`;
+  const { dataMedium } = mediumArticleData;
 
   return {
     props: {
       title: "Blogs",
+      mediumArticles: dataMedium,
       tweets,
       blogStats,
       tags,
@@ -212,50 +302,6 @@ const getBlogStats = (articlesData: any) => {
       value: articlesData.reduce((acc: number, curr: any) => acc + curr.page_views_count, 0),
     },
   ];
-};
-
-const getTweetFromArticle = (article: any): TweetType => {
-  const {
-    id,
-    reading_time_minutes,
-    user,
-    description,
-    url,
-    positive_reactions_count,
-    page_views_count,
-    published_at,
-    comments_count,
-    cover_image,
-  } = article;
-
-  const { username } = user;
-  return {
-    id: id,
-    name: "Dev.to",
-    nameLink: `https://dev.to/${username}`,
-    username: "Dev.to",
-    usernameLink: url,
-    description: `${reading_time_minutes}m`,
-    verified: true,
-    images: [cover_image],
-    info: new Date(published_at).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    text: description,
-    details: [
-      {
-        data: page_views_count,
-      },
-      {
-        data: positive_reactions_count,
-      },
-      {
-        data: comments_count,
-      },
-    ],
-  };
 };
 
 export default BlogPage;
