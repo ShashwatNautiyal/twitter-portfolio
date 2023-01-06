@@ -13,6 +13,7 @@ import Tweet from "../src/components/Tweet";
 import { GithubPageProps } from "../src/types";
 import {
   classNames,
+  getFollowerFromData,
   getGithubProfileStats,
   getGithubStats,
   getTweetFromRepo,
@@ -22,18 +23,6 @@ const GithubPage = (props: GithubPageProps) => {
   const { tweets, githubStats, languages, profileStats, user, followerStats } = props;
 
   const { name, login, company, bio, html_url, location } = user;
-
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShow(true);
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
 
   return (
     <div className="flex gap-4">
@@ -253,10 +242,4 @@ export async function getStaticProps() {
   };
 }
 
-const getFollowerFromData = (follower: any) => {
-  return {
-    name: follower.login,
-    value: follower.avatar_url,
-  };
-};
 export default GithubPage;

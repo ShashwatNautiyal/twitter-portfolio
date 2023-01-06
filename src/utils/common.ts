@@ -115,3 +115,14 @@ export const getTweetFromArticle = (article: any): TweetType => {
     ],
   };
 };
+
+export const getFollowerFromData = (follower: any) => {
+  return {
+    name: follower.login,
+    value: follower.avatar_url,
+  };
+};
+
+export const copyArray = <T = any>(array: T[], noOfCopies: number) => {
+  return Array.from({ length: noOfCopies }, () => array).flat();
+};

@@ -42,7 +42,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white h-screen min-w-[300px] py-4 shadow-md sticky top-0">
+    <div className="bg-white h-screen max-w-[300px] min-w-[200px] w-[20%] py-4 shadow-md sticky top-0">
       <div className="relative mx-4">
         <span
           className={`${pacifico.className} absolute text-white-light text-[10px] top-[16px] left-[10px]`}
