@@ -271,6 +271,8 @@ export async function getStaticProps() {
   const bio = `I hope you enjoy reading my blogs as much as I enjoy writing them.`;
   const { dataMedium } = mediumArticleData;
 
+  console.log(dataMedium);
+
   return {
     props: {
       title: "Blogs",
