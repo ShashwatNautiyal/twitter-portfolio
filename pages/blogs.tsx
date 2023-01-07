@@ -220,12 +220,12 @@ const BlogPage = (props: BlogPageProps) => {
                 <div className="flex items-center gap-1">
                   <Image
                     alt="dev logo"
-                    src={"/images/dev.png"}
+                    src={"/images/medium.png"}
                     width={32}
                     height={32}
                     className="rounded-full"
                   />
-                  <div className="font-medium">Dev</div>
+                  <div className="font-medium">Medium</div>
                   <Image
                     alt="verified bage"
                     src={"/images/verify.png"}
@@ -235,7 +235,11 @@ const BlogPage = (props: BlogPageProps) => {
                   />
                 </div>
               </div>
-              <Button referrerPolicy="no-referrer" target="_blank" href={devLink}>
+              <Button
+                referrerPolicy="no-referrer"
+                target="_blank"
+                href={`https://medium.com/${process.env.NEXT_PUBLIC_MEDIUM_USERNAME}`}
+              >
                 Check now
               </Button>
             </div>
@@ -270,8 +274,6 @@ export async function getStaticProps() {
   const devLink = `https://dev.to/${articlesData[0].user.username}`;
   const bio = `I hope you enjoy reading my blogs as much as I enjoy writing them.`;
   const { dataMedium } = mediumArticleData;
-
-  console.log(dataMedium);
 
   return {
     props: {
