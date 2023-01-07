@@ -15,7 +15,7 @@ const Tweet = ({
   usernameLink,
   verified,
   description,
-  images,
+  image,
   info,
   text,
   details,
@@ -31,7 +31,7 @@ const Tweet = ({
   verified: boolean;
   description?: string;
   InfoIcon: JSX.Element;
-  images?: string[];
+  image?: string;
   info: {
     data: string;
   };
@@ -43,6 +43,7 @@ const Tweet = ({
     data: string;
   }[];
 }) => {
+  console.log(image);
   return (
     <FadeTransition.Child delay={index * 100}>
       <div className="flex gap-2 text-sm mb-4">
@@ -99,21 +100,17 @@ const Tweet = ({
           </div>
 
           <div className="leading-6 whitespace-pre-line">{text}</div>
-          {images && images.length > 0 && (
-            <div className="grid gap-1 lg:grid-cols-2 grid-cols-1 relative h-52">
-              {images?.map((image, index) => (
-                <div key={index} className="relative h-full w-full ">
-                  <Image
-                    style={{
-                      objectFit: "cover",
-                    }}
-                    alt="github logo"
-                    className="rounded-md"
-                    src={image}
-                    fill={true}
-                  />
-                </div>
-              ))}
+          {image && (
+            <div key={index} className="relative h-52 w-full ">
+              <Image
+                style={{
+                  objectFit: "cover",
+                }}
+                alt={text}
+                className="rounded-md"
+                src={image}
+                fill={true}
+              />
             </div>
           )}
           <div className="flex space-x-2 divide-x divide-gray-light">

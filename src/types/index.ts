@@ -7,7 +7,7 @@ export type TweetType = {
   verified: boolean;
   description?: string;
   info: string;
-  images?: string[];
+  image?: string;
   text: string;
   details: {
     data: string;

@@ -146,7 +146,7 @@ const BlogPage = (props: BlogPageProps) => {
                   index={index}
                   key={tweet.id}
                   imgSrc={"/images/dev.png"}
-                  images={tweet.images?.map((image) => image)}
+                  image={tweet.image}
                   name={tweet.name}
                   nameLink={tweet.nameLink}
                   username={tweet.username}
@@ -274,6 +274,8 @@ export async function getStaticProps() {
   const devLink = `https://dev.to/${articlesData[0].user.username}`;
   const bio = `I hope you enjoy reading my blogs as much as I enjoy writing them.`;
   const { dataMedium } = mediumArticleData;
+
+  console.log(tweets);
 
   return {
     props: {

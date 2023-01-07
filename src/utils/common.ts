@@ -95,7 +95,7 @@ export const getTweetFromArticle = (article: any): TweetType => {
     usernameLink: url,
     description: `${reading_time_minutes}m`,
     verified: true,
-    images: [cover_image],
+    image: cover_image,
     info: new Date(published_at).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
