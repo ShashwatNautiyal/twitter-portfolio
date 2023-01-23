@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
 import { Pacifico } from "@next/font/google";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import FadeTransition from "../src/components/FadeTransition";
 
@@ -31,10 +32,16 @@ export default function HomePage() {
 
         <FadeTransition.Child direction="up" delay={300}>
           <div className="flex gap-4">
-            <div className="text-stroke-dark-gray text-2xl text-transparent">-&gt; My Projects</div>
-            <div className="text-stroke-dark-gray text-2xl text-transparent">
-              -&gt; More about me
-            </div>
+            <Link legacyBehavior href={"/github"} passHref>
+              <a className="text-stroke-dark-gray text-2xl text-transparent after:bg-gray-dark">
+                -&gt; My Projects
+              </a>
+            </Link>
+            <Link legacyBehavior passHref href={"/profile"}>
+              <a className="text-stroke-dark-gray text-2xl text-transparent after:bg-gray-dark">
+                -&gt; More about me
+              </a>
+            </Link>
           </div>
         </FadeTransition.Child>
       </div>

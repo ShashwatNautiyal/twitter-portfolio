@@ -108,18 +108,18 @@ const navLinks = [
     activeIcon: MdArticle,
     href: "/blogs",
   },
-  //   {
-  //     name: "Contact",
-  //     icon: MdOutlineContactPage,
-  //     activeIcon: MdContactPage,
-  //     href: "/contact",
-  //   },
-  //   {
-  //     name: "Profile",
-  //     icon: MdOutlineAccountCircle,
-  //     activeIcon: MdAccountCircle,
-  //     href: "/profile",
-  //   },
+  {
+    name: "Contact",
+    icon: MdOutlineContactPage,
+    activeIcon: MdContactPage,
+    href: "/contact",
+  },
+  {
+    name: "Profile",
+    icon: MdOutlineAccountCircle,
+    activeIcon: MdAccountCircle,
+    href: "/profile",
+  },
 ];
 
 export default Sidebar;

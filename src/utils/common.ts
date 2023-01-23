@@ -1,4 +1,5 @@
 import { TweetType } from "../types";
+import { getDomain } from "./domain";
 
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
@@ -121,6 +122,156 @@ export const getFollowerFromData = (follower: any) => {
     name: follower.login,
     value: follower.avatar_url,
   };
+};
+
+export const getTweetFromExperience = (experience: any): TweetType => {
+  const { id, attributes } = experience;
+  const imageDomain = getDomain();
+  const { endedAt, isPresent, location, name, role, startedAt, tasks, type, website, logo } =
+    attributes;
+
+  const {
+    data: { attributes: logoAttributes },
+  } = logo;
+
+  return {
+    id: id,
+    name: name,
+    profileImage: `${imageDomain}${logoAttributes.url}`,
+    nameLink: `https://${website}`,
+    username: website,
+    usernameLink: `https://${website}`,
+    description: role,
+    verified: true,
+    info: `${new Date(startedAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+    })} - ${
+      isPresent
+        ? "Present"
+        : new Date(endedAt).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+          })
+    }`,
+    text: tasks,
+    details: [
+      {
+        data: `${getMonthsDiff(startedAt, endedAt)} Months`,
+      },
+      {
+        data: location,
+      },
+      {
+        data: type,
+      },
+    ],
+  };
+};
+
+export const getTweetFromSkill = (skill: any): TweetType => {
+  const { id, attributes } = skill;
+  const { skills, level, favourite, publishedAt, startedAt } = attributes;
+  return {
+    id: id,
+    name: "Shashwat Nautiyal",
+    nameLink: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+    username: "shashwatnautiyal",
+    usernameLink: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+    verified: true,
+    info: new Date(publishedAt).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    text: skills,
+    details: [
+      {
+        data: `${getYearsDiff(startedAt)} Years`,
+      },
+      {
+        data: level,
+      },
+      {
+        data: favourite,
+      },
+    ],
+  };
+};
+
+export const getTweetFromAbout = (about: any, userData: any): TweetType => {
+  const { id, attributes } = about;
+  const { text, publishedAt } = attributes;
+  const { followers, created_at } = userData;
+
+  return {
+    id: id,
+    name: "Shashwat Nautiyal",
+    nameLink: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+    username: "shashwatnautiyal",
+    usernameLink: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+    verified: true,
+    info: new Date(publishedAt).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    text: text,
+    details: [
+      {
+        data: new Date(created_at).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        }),
+      },
+      {
+        data: followers,
+      },
+      {
+        data: `@${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+      },
+    ],
+  };
+};
+
+export const getTweetFromInformation = (information: any): TweetType => {
+  const { id, attributes } = information;
+  const { text, publishedAt } = attributes;
+
+  return {
+    id: id,
+    name: "Shashwat Nautiyal",
+    nameLink: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+    username: "shashwatnauti",
+    usernameLink: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+    verified: true,
+    info: new Date(publishedAt).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    text: text,
+    details: [
+      {
+        data: "shashwatnautiyal2015@gmail.com",
+      },
+    ],
+  };
+};
+
+const getMonthsDiff = (startDate: string, endDate?: string) => {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+  const months = (end.getFullYear() - start.getFullYear()) * 12;
+  return (months - start.getMonth() + end.getMonth() + 1).toString();
+};
+
+const getYearsDiff = (startDate: string, endDate?: string) => {
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date();
+  const years = end.getFullYear() - start.getFullYear();
+  return years.toString();
 };
 
 export const copyArray = <T = any>(array: T[], noOfCopies: number) => {

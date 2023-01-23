@@ -1,7 +1,5 @@
-import { Transition } from "@headlessui/react";
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { GrOrganization } from "react-icons/gr";
 import { MdLanguage, MdLocationOn, MdRemoveRedEye, MdStar } from "react-icons/md";
 import { VscRepoForked } from "react-icons/vsc";
@@ -80,6 +78,7 @@ const GithubPage = (props: GithubPageProps) => {
                   speed={100}
                 >
                   <Image
+                    priority
                     src={follower.value}
                     alt="Profile Picture"
                     width={32}
@@ -206,7 +205,7 @@ export async function getStaticProps() {
   });
 
   const { data: followersData } = await axios.get(
-    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/followers?per_page=100`,
+    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/followers?per_page=1000`,
     {
       headers: {
         Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,

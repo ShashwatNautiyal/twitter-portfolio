@@ -1,5 +1,6 @@
 export type TweetType = {
   id: string;
+  profileImage?: string;
   name: string;
   nameLink: string;
   username: string;

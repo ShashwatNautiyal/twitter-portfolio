@@ -50,11 +50,13 @@ const TabsContainer = ({ tabNames, tabs }: { tabNames: string[]; tabs: ReactNode
           ></div>
         </Tab.List>
         <Tab.Panels className={"mt-4"}>
-          {tabs?.map((tab, index) => (
-            <FadeTransition key={index}>
-              <Tab.Panel key={index}>{tab}</Tab.Panel>
-            </FadeTransition>
-          ))}
+          <div>
+            <FadeTransition.Root>
+              {tabs?.map((tab, index) => (
+                <Tab.Panel key={index}>{tab}</Tab.Panel>
+              ))}
+            </FadeTransition.Root>
+          </div>
         </Tab.Panels>
       </Tab.Group>
     </div>

@@ -1,7 +1,13 @@
 import { Transition } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
 
-const FadeTransition = ({ children }: { children: React.ReactNode }) => {
+const FadeTransition = ({
+  children,
+  classname,
+}: {
+  children: React.ReactNode;
+  classname?: string;
+}) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -15,7 +21,7 @@ const FadeTransition = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <Transition.Root appear show={show} as={React.Fragment}>
+    <Transition.Root className={classname} appear show={show}>
       {children}
     </Transition.Root>
   );

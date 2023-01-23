@@ -97,7 +97,8 @@ const BlogPage = (props: BlogPageProps) => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Image
-                            alt="dev logo"
+                            priority
+                            alt="medium logo"
                             src={"/images/medium.png"}
                             width={32}
                             height={32}
@@ -274,8 +275,6 @@ export async function getStaticProps() {
   const devLink = `https://dev.to/${articlesData[0].user.username}`;
   const bio = `I hope you enjoy reading my blogs as much as I enjoy writing them.`;
   const { dataMedium } = mediumArticleData;
-
-  console.log(tweets);
 
   return {
     props: {

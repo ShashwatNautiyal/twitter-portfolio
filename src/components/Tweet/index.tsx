@@ -43,7 +43,6 @@ const Tweet = ({
     data: string;
   }[];
 }) => {
-  console.log(image);
   return (
     <FadeTransition.Child delay={index * 100}>
       <div className="flex gap-2 text-sm mb-4">
