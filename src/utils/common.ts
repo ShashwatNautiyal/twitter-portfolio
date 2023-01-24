@@ -126,7 +126,6 @@ export const getFollowerFromData = (follower: any) => {
 
 export const getTweetFromExperience = (experience: any): TweetType => {
   const { id, attributes } = experience;
-  const imageDomain = getDomain();
   const { endedAt, isPresent, location, name, role, startedAt, tasks, type, website, logo } =
     attributes;
 
@@ -137,7 +136,7 @@ export const getTweetFromExperience = (experience: any): TweetType => {
   return {
     id: id,
     name: name,
-    profileImage: `${imageDomain}${logoAttributes.url}`,
+    profileImage: `${logoAttributes.url}`,
     nameLink: `https://${website}`,
     username: website,
     usernameLink: `https://${website}`,

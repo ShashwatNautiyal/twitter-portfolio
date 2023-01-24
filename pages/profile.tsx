@@ -250,6 +250,8 @@ export async function getStaticProps() {
     data: { data: experienceData },
   } = await axiosInstance.get("/experiences?populate=logo");
 
+  console.log(experienceData[0].attributes.logo);
+
   const {
     data: { data: skillsData },
   } = await axiosInstance.get("/skills");

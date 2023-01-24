@@ -170,7 +170,7 @@ export async function getStaticProps() {
       name: attributes.name,
       username: attributes.username,
       link: attributes.link,
-      logo: `${imageDomain}${logoAttributes.url}`,
+      logo: `${logoAttributes.url}`,
     };
   });
 
