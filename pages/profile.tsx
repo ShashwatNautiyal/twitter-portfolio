@@ -248,17 +248,15 @@ const AboutMeTab = ({ tweets }: { tweets: TweetType[] }) => {
 export async function getStaticProps() {
   const {
     data: { data: experienceData },
-  } = await axiosInstance.get("/experiences?populate=logo");
-
-  console.log(experienceData[0].attributes.logo);
+  } = await axiosInstance.get("/experiences?populate=logo&sort=startedAt:desc");
 
   const {
     data: { data: skillsData },
-  } = await axiosInstance.get("/skills");
+  } = await axiosInstance.get("/skills?sort=startedAt:desc");
 
   const {
     data: { data: aboutMeData },
-  } = await axiosInstance.get("/about-mes");
+  } = await axiosInstance.get("/about-mes?&sort=createdAt:desc");
 
   const { data: userData } = await axios.get(`https://api.github.com/user`, {
     headers: {

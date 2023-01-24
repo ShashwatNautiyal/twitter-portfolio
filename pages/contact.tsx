@@ -154,12 +154,10 @@ const InformationTab = ({ tweets }: { tweets: TweetType[] }) => {
 export async function getStaticProps() {
   const {
     data: { data: contactsData },
-  } = await axiosInstance.get("/contacts?populate=logo");
+  } = await axiosInstance.get("/contacts?populate=logo&sort=name");
   const {
     data: { data: informationData },
-  } = await axiosInstance.get("/informations");
-
-  const imageDomain = getDomain();
+  } = await axiosInstance.get("/informations?sort=createdAt:desc");
 
   const contacts = contactsData.map(({ attributes }: { attributes: any }) => {
     const {
