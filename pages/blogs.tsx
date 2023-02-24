@@ -279,6 +279,7 @@ export async function getStaticProps() {
   return {
     props: {
       title: "Blogs",
+      asPath: "blogs",
       mediumArticles: dataMedium,
       tweets,
       blogStats,
