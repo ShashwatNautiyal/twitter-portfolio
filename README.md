@@ -49,6 +49,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
   <p align="center">
   <a href="https://github.com/ShashwatNautiyal"><img src="https://avatars.githubusercontent.com/ShashwatNautiyal" width="20%" /></a>
 
-  
 
- 
+
+<h1 align=center> Our Amazing Contributors 👨‍👨‍👦‍👦❤️</h1>
+
+Thanks to all the contributors who worked for this project to stay alive! 😊😎
+
+<a align="center" href="https://github.com/ShashwatNautiyal/twitter-portfolio/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ShashwatNautiyal/twitter-portfolio&&max=817" />  
+</a>
+
