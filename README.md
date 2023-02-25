@@ -59,3 +59,9 @@ Thanks to all the contributors who worked for this project to stay alive! 😊�
   <img src="https://contrib.rocks/image?repo=ShashwatNautiyal/twitter-portfolio&&max=817" />  
 </a>
 
+
+---
+<div align="center">
+    <h3><b>Take a moment to star ⭐ the project if you like it</b></h3>
+    <h3>Do checkout the other repos 💫</h3> 
+</div>
