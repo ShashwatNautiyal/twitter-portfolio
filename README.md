@@ -34,3 +34,34 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# <h1 align=center>🧑‍💻 CONTRIBUTION 👏</h1>
+
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are greatly appreciated.
+
+
+<br>
+
+
+<h1 align=center> Project Admin 💻</h1>
+
+  <p align="center">
+  <a href="https://github.com/ShashwatNautiyal"><img src="https://avatars.githubusercontent.com/ShashwatNautiyal" width="20%" /></a>
+
+
+
+<h1 align=center> Our Amazing Contributors 👨‍👨‍👦‍👦❤️</h1>
+
+Thanks to all the contributors who worked for this project to stay alive! 😊😎
+
+<a align="center" href="https://github.com/ShashwatNautiyal/twitter-portfolio/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ShashwatNautiyal/twitter-portfolio&&max=817" />  
+</a>
+
+
+---
+<div align="center">
+    <h3><b>Take a moment to star ⭐ the project if you like it</b></h3>
+    <h3>Do checkout the other repos 💫</h3> 
+</div>
